@@ -179,9 +179,16 @@ public class ConsoleView {
 
                 case "10":
 
+                    System.out.println("enter place to filter by");
+                    String filterP = scanner.nextLine();
+                    controller.filterByPlace(filterP);
                     break;
 
                 case "11":
+                    System.out.println("enter prodId to filter by");
+                    Integer prodIdd = scanner.nextInt();
+                    scanner.nextLine();
+                    controller.filterByProd(prodIdd);
 
                     break;
 

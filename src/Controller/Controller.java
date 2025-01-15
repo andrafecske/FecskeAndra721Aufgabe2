@@ -25,6 +25,7 @@ public class Controller {
         Character char1 = new Character("Romania", "Mara", 1);
         Character char2 = new Character("Transilvania", "Nana", 2);
         Character char3 = new Character("Constanta", "Iulia", 3);
+        Character char4 = new Character("Romania", "Mara", 4);
 
         productRepo.create(product1);
         productRepo.create(product2);
@@ -33,6 +34,10 @@ public class Controller {
         characterRepo.create(char1);
         characterRepo.create(char2);
         characterRepo.create(char3);
+        characterRepo.create(char4);
+
+        addProductToClient(1,1);
+        addProductToClient(2,1);
     }
 
     public void addCharacter(Character character) {
@@ -102,7 +107,21 @@ public class Controller {
 
     }
 
+    public void filterByPlace(String place) {
+        List<Character> chars= characterRepo.getAll();
+        chars.stream()
+                .filter(character -> character.getPlace().equals(place))
+                .forEach(System.out::println);
+    }
 
+    public void filterByProd(Integer prodID){
+        List<Character> chars= characterRepo.getAll();
+        chars.stream()
+                .filter(character -> character.getProductList()
+                        .stream()
+                        .anyMatch(product -> product.getId().equals(prodID)))
+                .forEach(System.out::println);
+    }
 
 
 
