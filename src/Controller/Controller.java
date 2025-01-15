@@ -4,6 +4,7 @@ import Models.Character;
 import Models.Product;
 import Repo.IRepository;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class Controller {
@@ -123,6 +124,19 @@ public class Controller {
                 .forEach(System.out::println);
     }
 
+    public void filterProdByPrice(Integer charId, String ascOrDesc){
+       Character charr= characterRepo.read(charId);
+        List<Product> prods = charr.getProductList();
+        if(ascOrDesc.equals("asc")){
+            prods.stream()
+                    .sorted(Comparator.comparing(Product::getPrice))
+                    .forEach(System.out::println);
+        }
+        else
+            prods.stream()
+                    .sorted((Comparator.comparing(Product::getPrice).reversed()))
+                    .forEach(System.out::println);
+    }
 
 
 

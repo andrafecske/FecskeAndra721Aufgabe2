@@ -194,6 +194,12 @@ public class ConsoleView {
 
                 case "12":
 
+                    System.out.println("enter client id");
+                    Integer charrID = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.println("ENTER asc or desc");
+                    String ordered = scanner.nextLine();
+                    controller.filterProdByPrice(charrID, ordered);
                     break;
 
 
