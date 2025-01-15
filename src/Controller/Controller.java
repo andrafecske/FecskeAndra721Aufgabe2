@@ -41,13 +41,26 @@ public class Controller {
         addProductToClient(2,1);
     }
 
+    /**
+     * adds character
+     * @param character
+     */
     public void addCharacter(Character character) {
         characterRepo.create(character);
     }
 
+    /**
+     * adds product
+     * @param product
+     */
     public void addProduct(Product product) {
         productRepo.create(product);
     }
+
+    /**
+     * deleted product
+     * @param product
+     */
 
     public void deleteProduct(Product product) {
         productRepo.delete(product.getId());
@@ -57,16 +70,29 @@ public class Controller {
         productRepo.update(product.getId(), product);
     }
 
+    /**
+     * returns all products
+     * @return
+     */
     public List<Product> getProducts() {
         return productRepo.getAll();
     }
 
+    /**
+     * shows all products
+     */
     public void showProducts() {
         List<Product> products = productRepo.getAll();
         for (Product product : products) {
             System.out.println(product);
         }
     }
+
+    /**
+     * gets a prod by id
+     * @param id
+     * @return
+     */
 
     public Product getProductById(int id) {
         return productRepo.read(id);
@@ -77,6 +103,10 @@ public class Controller {
     }
 
 
+    /**
+     * deletes character
+     * @param character
+     */
 
     public void deleteCharacter(Character character) {
         characterRepo.delete(character.getId());
@@ -101,6 +131,11 @@ public class Controller {
         return characterRepo.read(id);
     }
 
+    /**
+     * adds a product to a client
+     * @param clientID
+     * @param productID
+     */
     public void addProductToClient(Integer clientID, Integer productID) {
         Character client = characterRepo.read(clientID);
         Product product = getProductById(productID);
