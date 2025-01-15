@@ -1,5 +1,8 @@
+import Models.Character;
+import Models.Product;
 import Repo.InMemoryRepository;
 import View.ConsoleView;
+import Controller.Controller;
 
 import java.util.Scanner;
 
@@ -8,8 +11,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        InMemoryRepository<> repo1 = new InMemoryRepository<>();
-        InMemoryRepository<> repo2= new InMemoryRepository<>();
+        InMemoryRepository<Product> repo1 = new InMemoryRepository<Product>();
+        InMemoryRepository<Character> repo2= new InMemoryRepository<Character>();
 
         Scanner scanner = new Scanner(System.in);
         Controller controller = new Controller(repo1, repo2);
