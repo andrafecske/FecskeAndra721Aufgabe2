@@ -108,12 +108,23 @@ public class Controller {
 
     }
 
+    /**
+     *
+     * @param place
+     * filters clients by place they come from
+     */
+
     public void filterByPlace(String place) {
         List<Character> chars= characterRepo.getAll();
         chars.stream()
                 .filter(character -> character.getPlace().equals(place))
                 .forEach(System.out::println);
     }
+
+    /**
+     *  filters clients by prpoduct purchased
+     * @param prodID
+     */
 
     public void filterByProd(Integer prodID){
         List<Character> chars= characterRepo.getAll();
@@ -123,6 +134,13 @@ public class Controller {
                         .anyMatch(product -> product.getId().equals(prodID)))
                 .forEach(System.out::println);
     }
+
+    /**
+     *
+     * @param charId
+     * @param ascOrDesc
+     * sorts a clients prods by price
+     */
 
     public void filterProdByPrice(Integer charId, String ascOrDesc){
        Character charr= characterRepo.read(charId);
